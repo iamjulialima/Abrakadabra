@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="abrakadabraico.png">
+    <title>Abrakadabra</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="form-box login">
+            <form action="">
+                <h1>Login</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Usuário" required>
+                    <i class='bx bxs-user'></i> 
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Senha" required>
+                    <i class='bx bxs-lock-alt'></i>
+                    
+                </div>
+
+                <button type="submit" class="btn">Fazer login</button>
+                
+            </form>
+        </div>
+        <!--aba esquerda-->
+        
+
+        <div class="form-box register">
+            <form action="">
+                <h1>Cadastre-se</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Usuário" required>
+                    <i class='bx bxs-user'></i> 
+                </div>
+                <div class="input-box">
+                    <input type="email" placeholder="Email" required>
+                    <i class='bx bxs-envelope'></i> 
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Senha" required>
+                    <i class='bx bxs-lock-alt'></i>
+                    
+                </div>
+
+                <button type="submit" class="btn">Cadastre-se</button>
+                
+            </form>
+        </div>
+        <!--aba esquerda-->
+        <div class="toogle-box">
+            <div class="toggle-panel toogle-left">
+                <img src="ofi.png" alt="Logotipo" class="logo">
+                <p></p>
+                <h1>Olá, Seja bem-vindo!</h1>
+                <p></p>
+                <p>Não tem uma conta?</p>
+                <button class="btn register-btn">Cadastre-se</button>
+            </div>
+            <div class="toggle-panel toogle-right">
+                <img src="ofi.png" alt="Logotipo" class="logo">
+            <p></p>
+                <h1>Bem-vindo de volta!</h1>
+                <p></p>
+                <p>Já tem uma conta?</p>
+                <button class="btn login-btn">Fazer login</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
