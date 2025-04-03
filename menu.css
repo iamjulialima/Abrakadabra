@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: white;
+    background: #7494ec;
     position: relative;
 }
 
@@ -16,7 +16,7 @@ body {
     left: 0;
     width: 100%;
     height: 150px;
-    background: #7494ec;
+    background: white;
     clip-path: polygon(0% 100%, 0% 0%, 100% 60%, 100% 100%);
 }
 
@@ -24,8 +24,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #7494ec;
-    color: white;
+    background: white;
+    color: #7494ec;
     padding: 10px;
 }
 
@@ -33,8 +33,9 @@ body {
     display: flex;
 }
 
+
 .navbar nav a {
-    color: white;
+    color: #7494ec;
     text-decoration: none !important;
     margin: 0 10px;
     font-weight: 500;
@@ -43,8 +44,8 @@ body {
 }
 
 .navbar nav a:hover { 
-    color: #7494ec;
-    background: white;
+    color: white;
+    background: #7494ec;
     padding: 5px 10px ;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)
@@ -60,8 +61,8 @@ body {
 
 
 .status-box {
-    background: #7494ec;
-    color: white;
+    background: white;
+    color: #7494ec;
     width: 45%;
     margin: 50px auto;
     padding: 20px;
@@ -82,8 +83,8 @@ body {
 }
 
 .btn {
-    background: white;
-    color: #7494ec;
+    background: #7494ec;
+    color: white;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -94,8 +95,8 @@ body {
 }
 
 .btn:hover {
-    background: #7494ec;
-    color: white;
+    background: white;
+    color: #7494ec;
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
