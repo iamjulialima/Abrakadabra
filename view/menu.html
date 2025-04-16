@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu - Abrakadabra</title>
-    <link rel="icon" type="image/svg+xml" href="/view/images/abrakadabraico.png">
-    <link rel="stylesheet" href="/view/css/menu.css">
+    <link rel="icon" type="image/svg+xml" href="/images/abrakadabraico.png">
+    <link rel="stylesheet" href="/css/menu.css">
 </head>
 <body>
    
     <header class="navbar">
         <nav class="ola">
-            <img src="/view/images/logoo.png" alt="Logotipo" class="logo"> 
+            <img src="/images/logoo.png" alt="Logotipo" class="logo"> 
             <p><strong>Olá, jorgee!</strong></p>
         </nav>
         <nav>
-            <a href="/view/telainicial.html"><strong>Início</strong></a>
-            <a href="/view/menu.html"><strong>Status</strong></a>
-            <a href="/view/relatorio.html"><strong>Relatório</strong></a>
-            <a href="/view/index.html"><strong>Sair</strong></a>
+            <a href="/telainicial.html"><strong>Início</strong></a>
+            <a href="/menu.html"><strong>Status</strong></a>
+            <a href="/relatorio.html"><strong>Relatório</strong></a>
+            <a href="/index.html"><strong>Sair</strong></a>
         </nav>
     </header>
     
@@ -28,9 +28,11 @@
             <p><strong>Seu portão está:</strong> </p>
             <p><strong>Horário que foi fechado:</strong></p>
         </div>
-        <button class="btn">Abrir Portão</button>
+        <button class="btn" id="servoBtn" onclick="alternar()">Carregando...</button>
     </main>
 
     <div class="shape"></div>
+
+    <script src="/js/servo.js"></script>
 </body>
 </html>
