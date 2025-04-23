@@ -7,8 +7,6 @@ const db = require('./database/db');
 const app = express();
 const port = 3000;
 
-
-
 app.use(express.json()); // Para ler JSON no body
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
@@ -47,7 +45,11 @@ parser.on('data', (data) => {
     ultimoComandoTempo = agora;
 
     servoLigado = novoEstado;
-    db.run('INSERT INTO servo (estado) VALUES (?)', [comando]);
+    const now = new Date();
+const horarioLocal = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+db.run('INSERT INTO servo (estado, horario) VALUES (?, ?)', [comando, horarioLocal]);
+
+
     console.log('[SALVO] Estado atualizado para:', comando);
 
     if (respostaPendente) {
@@ -104,3 +106,26 @@ app.get('/status', (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
+
+
+
+app.get('/status-completo', (req, res) => {
+  db.get('SELECT estado, horario FROM servo ORDER BY id DESC LIMIT 1', (err, row) => {
+    if (err) {
+      return res.status(500).json({ error: 'Erro ao buscar status' });
+    }
+
+    if (row) {
+      res.json({
+        estado: row.estado === '1' ? 'Aberto' : 'Fechado',
+        horario: row.horario
+      });
+    } else {
+      res.json({
+        estado: 'Desconhecido',
+        horario: 'N/A'
+      });
+    }
+  });
+});
+
