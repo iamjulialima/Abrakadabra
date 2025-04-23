@@ -12,19 +12,19 @@
     
     <div class="container">
         <div class="form-box login">
-            <form action="">
+            <form id="login-form">
                 <h1>Login</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Usuário" required>
+                    <input type="text" id="login-email" placeholder="Usuário" required>
                     <i class='bx bxs-user'></i> 
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Senha" required>
+                    <input type="password" id="login-senha" placeholder="Senha" required>
                     <i class='bx bxs-lock-alt'></i>
                     
                 </div>
 
-                <button type="submit" class="btn" onclick="window.location.href='/telainicial.html'">Fazer login</button>
+                <button type="submit" class="btn">Fazer login</button>
                 
             </form>
         </div>
@@ -75,6 +75,8 @@
     <script src="/js/script.js"></script>
 
     <script>
+
+        //cadastro
         document.getElementById('register-form').addEventListener('submit', async function (e) {
           e.preventDefault(); // impede o recarregamento da página
       
@@ -105,6 +107,39 @@
           }
         });
       </script>
+
+<script>
+    document.getElementById('login-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+  
+      const email = document.getElementById('login-email').value;
+      const senha = document.getElementById('login-senha').value;
+  
+      try {
+        const resposta = await fetch('/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, senha })
+        });
+  
+        const dados = await resposta.json();
+  
+        if (resposta.ok) {
+          alert(dados.mensagem);
+          window.location.href = '/telainicial.html';
+        } else {
+          alert(dados.mensagem);
+        }
+      } catch (err) {
+        alert('Erro ao tentar logar. Tente novamente mais tarde.');
+      }
+    });
+  </script>
+  
+  
+  
       
 </body>
 </html>
