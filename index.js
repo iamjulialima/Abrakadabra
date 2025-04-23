@@ -1,25 +1,18 @@
 const express = require('express');
 const { SerialPort } = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline');
-const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const db = require('./database/db');
 
 const app = express();
 const port = 3000;
 
-// Banco de dados
-const db = new sqlite3.Database('./abrakadabra.db');
-db.run(`CREATE TABLE IF NOT EXISTS servo (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  estado TEXT NOT NULL,
-  horario DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
-)`);
-db.run(`CREATE TABLE IF NOT EXISTS usuarios (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL,
-    senha TEXT NOT NULL
-  )`);
+
+
+app.use(express.json()); // Para ler JSON no body
+const authRoutes = require('./routes/auth');
+app.use('/auth', authRoutes);
+
 
 // Porta serial
 const arduino = new SerialPort({

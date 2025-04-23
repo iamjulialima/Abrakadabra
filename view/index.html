@@ -32,18 +32,18 @@
         
 
         <div class="form-box register">
-            <form action="">
+            <form id="register-form">
                 <h1>Cadastre-se</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Usuário" required>
+                    <input type="text" placeholder="Usuário" required id="register-nome">
                     <i class='bx bxs-user'></i> 
                 </div>
                 <div class="input-box">
-                    <input type="email" placeholder="Email" required>
+                    <input type="email" placeholder="Email" required id="register-email">
                     <i class='bx bxs-envelope'></i> 
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Senha" required>
+                    <input type="password" placeholder="Senha" required id="register-senha">
                     <i class='bx bxs-lock-alt'></i>
                     
                 </div>
@@ -73,5 +73,38 @@
         </div>
     </div>
     <script src="/js/script.js"></script>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', async function (e) {
+          e.preventDefault(); // impede o recarregamento da página
+      
+          const nome = document.getElementById('register-nome').value;
+          const email = document.getElementById('register-email').value;
+          const senha = document.getElementById('register-senha').value;
+      
+          try {
+            const resposta = await fetch('/auth/register', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ nome, email, senha })
+            });
+      
+            const dados = await resposta.json();
+      
+            if (resposta.ok) {
+              alert(dados.mensagem); // Usuário cadastrado com sucesso
+              document.getElementById('register-form').reset();
+            } else {
+              alert(dados.mensagem); // Erros como "email já cadastrado"
+            }
+      
+          } catch (err) {
+            alert('Erro ao tentar cadastrar. Tente novamente mais tarde.');
+          }
+        });
+      </script>
+      
 </body>
 </html>
