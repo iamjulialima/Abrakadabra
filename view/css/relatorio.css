@@ -41,10 +41,16 @@ body {
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-height: 450px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    scrollbar-color: #888 transparent;
+    padding: 16px;
 }
 .box h1 {
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: -60px;
+    margin-top: 20px;
 }
 
 
