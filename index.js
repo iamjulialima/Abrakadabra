@@ -129,3 +129,24 @@ app.get('/status-completo', (req, res) => {
   });
 });
 
+
+app.get('/registros', (req, res) => {
+  db.all("SELECT estado, horario FROM servo ORDER BY horario DESC", [], (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    const registrosFormatados = rows.map(r => {
+      // Converte string ou número para booleano
+      const estadoNumerico = Number(r.estado);
+      return {
+        horario: r.horario,
+        estado: estadoNumerico === 1 ? 'aberto' : 'fechado'
+      };
+    });
+
+    res.json(registrosFormatados);
+  });
+});
+
+
